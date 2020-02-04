@@ -1,6 +1,6 @@
 using System;
 
-namespace Todod.Domain.Entities
+namespace Todo.Domain.Entities
 {
     public abstract class Entity : IEquatable<Entity>
     {
