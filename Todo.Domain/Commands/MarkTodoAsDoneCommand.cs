@@ -5,27 +5,24 @@ using Todo.Domain.Commands.Contracts;
 
 namespace Todo.Domain.Commands
 {
-    public class UpdateTodoCommand : Notifiable, ICommand
+    public class MarkTodoAsDoneCommand : Notifiable, ICommand
     {
-        public UpdateTodoCommand() { }
+        public MarkTodoAsDoneCommand() { }
 
-        public UpdateTodoCommand(string title, string user, DateTime date)
+        public MarkTodoAsDoneCommand(Guid id, string user)
         {
-            Title = title;
+            Id = id;
             User = user;
-            Date = date;
         }
 
-        public string Title { get; set; }
+        public Guid Id { get; set; }
         public string User { get; set; }
-        public DateTime Date { get; set; }
 
         public void Validate()
         {
             AddNotifications(
                 new Contract()
                     .Requires()
-                    .HasMinLen(Title, 3, "Title", "Por favor, descreva melhor esta tarefa!")
                     .HasMinLen(User, 6, "User", "Usuário inválido!")
             );
         }
