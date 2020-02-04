@@ -9,17 +9,17 @@ namespace Todo.Domain.Commands
     {
         public UpdateTodoCommand() { }
 
-        public UpdateTodoCommand(string title, string user, DateTime date)
+public UpdateTodoCommand(Guid id, string title, string user)
         {
+            Id = id;
             Title = title;
             User = user;
-            Date = date;
         }
 
+        public Guid Id { get; set; }
         public string Title { get; set; }
         public string User { get; set; }
-        public DateTime Date { get; set; }
-
+        
         public void Validate()
         {
             AddNotifications(
